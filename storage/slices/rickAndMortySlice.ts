@@ -65,19 +65,15 @@ export const rickAndMortySlice = createSlice({
       state.status = API_RETURN_STATUSES.FULFILLED
       state.nextPage = action.payload?.data?.info?.next;
 
-      let payloadCharacters = action.payload?.data?.results;
       let newCharactersState: any = state.characters;
-
+      let payloadCharacters = action.payload?.data?.results;
+      
+      const idsInState = new Set(state.characters.map(character => character.id));
       for(let n = 0; n < payloadCharacters.length; n++) {
         const fetchedCharacter = payloadCharacters[n];
-        let addItem = true;
-        for(let s = 0; s < state.characters.length; s++) {
-          if(state.characters[s].id === payloadCharacters[n].id) {
-            addItem = false;
-          }
-        }
-        if(addItem) {
-          newCharactersState.push(fetchedCharacter);
+        const alreadyIncluded = idsInState.has(fetchedCharacter.id)
+        if(!alreadyIncluded) {
+          newCharactersState.push(fetchedCharacter)
         }
       }
       
