@@ -77,7 +77,10 @@ const styles = StyleSheet.create({
     fontSize: 13
   },
   rightCarot: {
-    paddingRight: 20
+    paddingRight: 20,
+    fontSize: 25,
+    fontWeight: '800',
+    alignSelf: 'center'
   },
   image: {
     width: '20%',
