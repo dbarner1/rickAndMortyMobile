@@ -12,8 +12,6 @@ export default function CharacterDetailScreen( { route }: any): JSX.Element {
     backgroundColor: isDarkMode ? BLACK : WHITE,
   };
 
-  console.log(character)
-
   return (
     <SafeAreaView style={{ ...backgroundStyle, ...styles.screenContainer }}>
       <StatusBar
